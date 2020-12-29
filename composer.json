@@ -1,8 +1,7 @@
 {
-  "name": "minicli/application",
-  "description": "Minicli Application Template",
-  "license": "MIT",
-  "homepage": "https://github.com/minicli/application",
+  "name": "wribeiiro/image-to-pdf-conversor",
+  "description": "Mini app to convert images a unic pdf file",
+  "homepage": "https://github.com/wribeiiro/image-to-pdf-conversor",
   "keywords": ["cli","command-line", "template"],
   "autoload": {
     "psr-4": {

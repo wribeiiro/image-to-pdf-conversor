@@ -36,10 +36,12 @@ class DefaultController extends CommandController
         $conversor   = new Conversor($files, $app->config->path_upload);
         $pdfDocument = $conversor->getRenderedDocument();
 
-        $this->getPrinter()->info("File PDF => " . $pdfDocument);
-        $this->getPrinter()->newline();
+        if (empty($pdfDocument)) {
+            $this->getPrinter()->error("A error ocurred while trying render document");
+            exit;
+        }
 
-        $this->getPrinter()->success("Conversion complete...");
+        $this->getPrinter()->success("Conversion complete\r\nFile PDF => {$pdfDocument}");
         $this->getPrinter()->newline();
     }
 }

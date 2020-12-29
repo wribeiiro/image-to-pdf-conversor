@@ -23,14 +23,19 @@ class Conversor
     }
 
     public function renderDocument() {
-        $this->dompdf->loadHtml(Util::templateHtml($this->images));
-        $this->dompdf->setPaper('A4', 'portrait');
-        $this->dompdf->render();
 
-        $this->document_rendered = $this->uploadDocument($this->dompdf->output());
+        $template = Util::templateHtml($this->images);
+
+        if (!empty($template)) {
+            $this->dompdf->loadHtml(Util::templateHtml($this->images));
+            $this->dompdf->setPaper('A4', 'portrait');
+            $this->dompdf->render();
+    
+            $this->document_rendered = $this->uploadDocument($this->dompdf->output());
+        }
     }
 
-    public function uploadDocument(string $contentDocument):? string {
+    public function uploadDocument(string $contentDocument): string {
 
         $filename = md5(time()) . ".pdf";
         $uploaded = "";
